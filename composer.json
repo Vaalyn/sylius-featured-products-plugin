@@ -1,11 +1,11 @@
 {
-    "name": "sylius/plugin-skeleton",
+    "name": "vaachar/sylius-featured-products-plugin",
     "type": "sylius-plugin",
     "keywords": ["sylius", "sylius-plugin"],
-    "description": "Acme example plugin for Sylius.",
+    "description": "Plugin to configure products that should be featured in a channel.",
     "license": "MIT",
     "require": {
-        "php": "^7.3",
+        "php": "^7.4",
 
         "sylius/sylius": "^1.8"
     },
@@ -41,8 +41,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Acme\\SyliusExamplePlugin\\": "src/",
-            "Tests\\Acme\\SyliusExamplePlugin\\": "tests/"
+            "VaaChar\\SyliusFeaturedProductsPlugin\\": "src/",
+            "Tests\\VaaChar\\SyliusFeaturedProductsPlugin\\": "tests/"
         }
     },
     "autoload-dev": {
