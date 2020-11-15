@@ -9,3 +9,28 @@
 <p align="center">Plugin to configure products that should be featured in a channel.</p>
 
 ## Quickstart Installation
+
+1. Require plugin via Composer
+```
+composer require vaachar/sylius-featured-products-plugin
+```
+
+2. Execute migrations
+```
+bin/console doctrine:migrations:migrate
+```
+
+3. Use twig macro to add featured products to a page
+```
+{{ sylius_render_featured_products() }}
+```
+
+**Example:**
+```
+<h2 class="ui huge horizontal section divider inverted header">{{ 'sylius_featured_products_plugin.ui.featured_products'|trans }}</h2>
+
+<div {{ sylius_test_html_attribute('featured-products') }}>
+    {{ sylius_render_featured_products() }}
+</div>
+<div class="ui hidden divider"></div>
+```
