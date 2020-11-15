@@ -14,13 +14,27 @@
 ```
 composer require vaachar/sylius-featured-products-plugin
 ```
+2. Inlcude config.yaml in `_sylius.yaml`
+```
+- { resource: "@SyliusFeaturedProductsPlugin/Resources/config/config.yaml" }
+```
 
-2. Execute migrations
+3. Use trait and add interface to `src/Entity/Product/Product.php`
+```
+class Product extends BaseProduct implements HasFeaturedProductInterface
+{
+    use FeaturedProductTrait;
+
+    ...
+}
+```
+
+4. Execute migrations
 ```
 bin/console doctrine:migrations:migrate
 ```
 
-3. Use twig macro to add featured products to a page
+5. Use twig macro to add featured products to a page
 ```
 {{ sylius_render_featured_products() }}
 ```
