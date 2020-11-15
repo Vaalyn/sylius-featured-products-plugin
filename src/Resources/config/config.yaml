@@ -1,0 +1,3 @@
+imports:
+    - { resource: "@SyliusFeaturedProductsPlugin/Resources/config/resources.yaml" }
+    - { resource: "@SyliusFeaturedProductsPlugin/Resources/config/services.yaml" }

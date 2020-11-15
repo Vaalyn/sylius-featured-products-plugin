@@ -1,0 +1,5 @@
+<div class="ui three odd doubling cards">
+    {% for featuredProduct in featuredProducts %}
+        {% include '@SyliusShop/Product/_box.html.twig' with { 'product': featuredProduct.product } %}
+    {% endfor %}
+</div>

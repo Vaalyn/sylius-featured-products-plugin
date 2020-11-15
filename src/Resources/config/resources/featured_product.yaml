@@ -1,0 +1,7 @@
+sylius_resource:
+    resources:
+        sylius_featured_products_plugin.featured_product:
+            driver: doctrine/orm
+            classes:
+                model: VaaChar\SyliusFeaturedProductsPlugin\Entity\FeaturedProduct
+                repository: VaaChar\SyliusFeaturedProductsPlugin\Repository\FeaturedProductRepository

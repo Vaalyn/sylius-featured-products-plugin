@@ -1,0 +1,15 @@
+<div class="ui tab" data-tab="featured_product">
+  <h3 class="ui top attached header">{{ 'sylius_featured_products_plugin.ui.featured'|trans }}</h3>
+  <div class="ui attached segment">
+    <div class="ui column stackable grid" id="vaachar-featured-product">
+        <div class="ui column stackable grid">
+            <div class="column">
+                <div class="ui segment">
+                    {{form_row(form.featuredProduct)}}
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  {{ sonata_block_render_event('sylius.admin.product.' ~ action ~ '.tab_featured_product', {'form': form}) }}
+</div>

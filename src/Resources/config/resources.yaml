@@ -1,0 +1,2 @@
+imports:
+    - { resource: resources/featured_product.yaml }

@@ -1,0 +1,9 @@
+services:
+    sylius_featured_products_plugin.twig.extension.featured_products:
+        class: VaaChar\SyliusFeaturedProductsPlugin\Twig\Extension\RenderFeaturedProductsExtension
+        arguments:
+            - "@sylius_featured_products_plugin.repository.featured_product"
+            - "@sylius.context.channel.cached"
+            - "@templating"
+        tags:
+            - { name: twig.extension }

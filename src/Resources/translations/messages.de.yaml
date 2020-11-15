@@ -1,0 +1,8 @@
+sylius_featured_products_plugin:
+    form:
+        product:
+            channels: Ausgabekanäle
+    ui:
+        featured: Featured
+        featured_in: Featured in
+        featured_products: Highlights

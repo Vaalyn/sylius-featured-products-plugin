@@ -1,0 +1,2 @@
+sylius_featured_products_plugin_admin_featured_product:
+    resource: "@SyliusFeaturedProductsPlugin/Resources/config/routing/admin/featured_product.yaml"

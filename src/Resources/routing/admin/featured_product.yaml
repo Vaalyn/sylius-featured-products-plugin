@@ -1,0 +1,16 @@
+#sylius_featured_products_plugin_admin_featured_product:
+#    resource: |
+#        alias: sylius_featured_products_plugin.featured_product
+#        section: admin
+#        templates: SyliusAdminBundle:Crud
+#        except: ['show']
+#        redirect: index
+#        grid: sylius_featured_products_plugin_admin_featured_product
+#        permission: true
+#        vars:
+#            all:
+#                templates:
+#                    form: "@SyliusFeaturedProductsPlugin/Admin/FeaturedProduct/_form.html.twig"
+#            index:
+#                icon: star
+#    type: sylius.resource

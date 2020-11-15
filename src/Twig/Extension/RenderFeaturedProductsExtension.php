@@ -4,19 +4,30 @@ declare(strict_types=1);
 
 namespace VaaChar\SyliusFeaturedProductsPlugin\Twig\Extension;
 
-use Sylius\Component\Core\Model\ChannelInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Symfony\Component\Templating\EngineInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use VaaChar\SyliusFeaturedProductsPlugin\Repository\FeaturedProductRepository;
 
 class RenderFeaturedProductsExtension extends AbstractExtension
 {
+    /** @var FeaturedProductRepository */
+    protected $featuredProductRepository;
+
+    /** @var ChannelContextInterface */
+    protected $channelContext;
+
     /** @var EngineInterface */
     protected $templatingEngine;
 
     public function __construct(
+        FeaturedProductRepository $featuredProductRepository,
+        ChannelContextInterface $channelContext,
         EngineInterface $templatingEngine
     ) {
+        $this->featuredProductRepository = $featuredProductRepository;
+        $this->channelContext = $channelContext;
         $this->templatingEngine = $templatingEngine;
     }
 
@@ -24,7 +35,7 @@ class RenderFeaturedProductsExtension extends AbstractExtension
     {
         return [
             new TwigFunction(
-                'vaachar_render_featured_products',
+                'sylius_render_featured_products',
                 [$this, 'renderFeaturedProducts'],
                 ['is_safe' => ['html']
             ]),
@@ -32,11 +43,15 @@ class RenderFeaturedProductsExtension extends AbstractExtension
     }
 
     public function renderFeaturedProducts(
-        ChannelInterface $channel,
-        int $featuredProductsCount = 4,
+        int $featuredProductsCount = 3,
         ?string $template = null
     ): string {
-        $featuredProducts = [];
+        $channel = $this->channelContext->getChannel();
+
+        $featuredProducts = $this->featuredProductRepository->fetchForChannel(
+            $channel,
+            $featuredProductsCount
+        );
 
         $template = $template ?? '@SyliusFeaturedProductsPlugin/Shop/featuredProducts.html.twig';
 

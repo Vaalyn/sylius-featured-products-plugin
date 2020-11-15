@@ -1,0 +1,19 @@
+imports:
+    - { resource: services/twig.yaml }
+
+services:
+    sylius_featured_products_plugin.product.type_extension:
+        class: VaaChar\SyliusFeaturedProductsPlugin\Form\ProductTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Sylius\Bundle\ProductBundle\Form\Type\ProductType, priority: -5 }
+
+    sylius_featured_products_plugin.feature.form.type:
+        class: VaaChar\SyliusFeaturedProductsPlugin\Form\Type\FeatureType
+        tags:
+            - { name: form.type }
+        arguments: ['VaaChar\SyliusFeaturedProductsPlugin\Entity\FeaturedProduct']
+
+    sylius_featured_products_plugin.listener.admin.product.form.menu_builder:
+        class: VaaChar\SyliusFeaturedProductsPlugin\Menu\AdminProductFormMenuListener
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.product.form, method: addItems }
