@@ -23,9 +23,11 @@ class FeaturedProductRepository extends EntityRepository
 
         $randomIds = $this->fetchRandomIds($channel, $limit);
 
-        $queryBuilder->andWhere(
-            $queryBuilder->expr()->in('fp.id', $randomIds)
-        );
+        if ($randomIds !== []) {
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->in('fp.id', $randomIds)
+            );
+        }
 
         return $queryBuilder
             ->setMaxResults($limit)
@@ -52,6 +54,10 @@ class FeaturedProductRepository extends EntityRepository
         $resultCount = count($availableFeaturedProductIds);
 
         $limit = min($limit, $resultCount);
+
+        if ($limit === 0) {
+            return [];
+        }
 
         $keysOfRandomlyPickedResults = (array) array_rand($availableFeaturedProductIds, $limit);
 
